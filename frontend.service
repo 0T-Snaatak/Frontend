@@ -1,0 +1,17 @@
+[Unit]
+Description=React App
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/Frontend
+ExecStart=npm start
+Restart=always
+KillMode=process
+KillSignal=SIGTERM
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target
