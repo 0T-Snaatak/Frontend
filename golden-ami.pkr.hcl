@@ -3,7 +3,10 @@
 // packer fmt .
 // packer validate .
 // packer build golden-ami.pkr.hcl
-
+// packer build \
+//   -var "weekday=Sunday" \
+//   -var "flavor=chocolate" \
+//   -var "sudo_password=hunter42" .
 
 packer {
   required_plugins {
@@ -40,20 +43,15 @@ build {
 
     inline = [
       "echo Installing Pre-requisites",
-      // "sleep 30",
       "sudo apt update",
-      // "echo Installing make...",
-      // "sudo apt install -y make",
-      "echo Installing npm..",
+      "sudo apt install nodejs -y",
       "sudo apt install npm -y",
-      "echo making dir",
-      "mkdir /home/ubuntu/Frontend/",
     ]
   }
 
   provisioner "file" {
-    destination = "/home/ubuntu/Frontend"
-    source      = "/home/harshit/Frontend/"
+    destination = "/home/ubuntu/"
+    source      = "/home/harshit/Frontend"
   }
 
   provisioner "shell" {
@@ -62,10 +60,8 @@ build {
     ]
     inline = [
       "echo Building Frontend",
-      // "sleep 30",
-      "ls /home/ubuntu/Frontend/",
       "cd /home/ubuntu/Frontend/ && npm install",
-      // "cd /home/ubuntu/Frontend/ && npm start",
+      "echo Adding Frontend Service File",
       "sudo mv /home/ubuntu/Frontend/frontend.service /etc/systemd/system/",
       "sudo systemctl daemon-reload",
       "sudo systemctl start frontend.service",
