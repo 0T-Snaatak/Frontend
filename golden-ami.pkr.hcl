@@ -7,7 +7,7 @@
 //   -var "weekday=Sunday" \
 //   -var "flavor=chocolate" \
 //   -var "sudo_password=hunter42" .
-
+// packer build -on-error=ask golden-ami.pkr.hcl 2>&1 | tee packer.log
 packer {
   required_plugins {
     amazon = {
