@@ -18,7 +18,7 @@ packer {
 }
 
 source "amazon-ebs" "frontend-app" {
-  ami_name      = "frontend-app-v4"
+  ami_name      = "frontend-app-v1"
   instance_type = "t2.micro"
   region        = "us-east-1"
   // subnet_id = "subnet-12345678"
@@ -36,7 +36,7 @@ source "amazon-ebs" "frontend-app" {
 }
 
 build {
-  name = "frontend-app-v4"
+  name = "frontend-app-v1"
   sources = [
     "source.amazon-ebs.frontend-app"
   ]
