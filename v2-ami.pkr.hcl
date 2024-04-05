@@ -18,7 +18,7 @@ packer {
 }
 
 source "amazon-ebs" "frontend-app" {
-  ami_name      = "frontend-app-v4"
+  ami_name      = "frontend-app-v2"
   instance_type = "t2.micro"
   region        = "us-east-1"
   // subnet_id = "subnet-12345678"
@@ -36,7 +36,7 @@ source "amazon-ebs" "frontend-app" {
 }
 
 build {
-  name = "frontend-app-v4"
+  name = "frontend-app-v2"
   sources = [
     "source.amazon-ebs.frontend-app"
   ]
@@ -45,9 +45,9 @@ build {
 
     inline = [
       "echo Installing Pre-requisites",
-      "sudo apt update",
-      "sudo apt install nodejs -y",
-      "sudo apt install npm -y",
+      "sudo apt-get update",
+      "sudo apt-get install nodejs -y",
+      "sudo apt-get install npm -y",
     ]
   }
 
