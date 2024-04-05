@@ -45,9 +45,9 @@ build {
 
     inline = [
       "echo Installing Pre-requisites",
-      "sudo apt update",
-      "sudo apt install nodejs -y",
-      "sudo apt install npm -y",
+      "sudo apt-get update",
+      "sudo apt-get install nodejs -y",
+      "sudo apt-get install npm -y",
     ]
   }
 
