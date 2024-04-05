@@ -18,9 +18,11 @@ packer {
 }
 
 source "amazon-ebs" "frontend-app" {
-  ami_name      = "frontend-app-v1"
+  ami_name      = "frontend-app-v4"
   instance_type = "t2.micro"
   region        = "us-east-1"
+  // subnet_id = "subnet-12345678"
+  // vpc_id = "vpc-12345678"
   source_ami_filter {
     filters = {
       name                = "ubuntu/images/*ubuntu-jammy-22.04-amd64-server-*"
@@ -34,7 +36,7 @@ source "amazon-ebs" "frontend-app" {
 }
 
 build {
-  name = "frontend-app-v1"
+  name = "frontend-app-v4"
   sources = [
     "source.amazon-ebs.frontend-app"
   ]
@@ -64,9 +66,9 @@ build {
       "echo Adding Frontend Service File",
       "sudo mv /home/ubuntu/Frontend/frontend.service /etc/systemd/system/",
       "sudo systemctl daemon-reload",
-      "sudo systemctl start frontend.service",
-      "sudo systemctl enable frontend.service",
-      "sudo systemctl status frontend.service",
+      // "sudo systemctl start frontend.service",
+      // "sudo systemctl enable frontend.service",
+      // "sudo systemctl status frontend.service",
     ]
   }
 
