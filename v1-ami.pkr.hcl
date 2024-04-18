@@ -20,7 +20,7 @@ packer {
 source "amazon-ebs" "frontend-app" {
   ami_name      = "frontend-app-v1"
   instance_type = "t2.micro"
-  region        = "us-east-1"
+  region        = "us-east-2"
   // subnet_id = "subnet-12345678"
   // vpc_id = "vpc-12345678"
   source_ami_filter {
